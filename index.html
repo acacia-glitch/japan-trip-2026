@@ -9,25 +9,34 @@
     .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
     h1 { color: #d87093; text-align: center; font-size: 24px; margin-bottom: 5px;}
     .subtitle { text-align: center; color: #a9a9a9; margin-bottom: 30px; font-size: 14px;}
-    .day-block { border-left: 4px solid #ffb6c1; padding-left: 15px; margin-bottom: 30px; }
+    
+    /* 1. 行程區塊預設隱藏，只有加上 active 的才會顯示 */
+    .day-block { border-left: 4px solid #ffb6c1; padding-left: 15px; margin-bottom: 30px; display: none; }
+    .day-block.active { display: block; }
+    
     .day-title { font-size: 18px; color: #333; margin-bottom: 15px; }
     .schedule p { margin: 10px 0; line-height: 1.5; }
     .time { font-weight: bold; color: #d87093; display: inline-block; width: 55px;}
     .note { font-size: 0.85em; color: #666; background: #fff8fa; padding: 4px 8px; border-radius: 5px; display: inline-block; margin-top: 4px;}
+    
+    /* 2. 按鈕樣式 */
     .shortcut-buttons { text-align: center; margin-bottom: 20px; }
-    .btn { display: inline-block; background-color: #ffb6c1; color: white; padding: 8px 16px; margin: 5px; border-radius: 20px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .btn { display: inline-block; background-color: #ffb6c1; color: white; padding: 8px 16px; margin: 5px; border-radius: 20px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: none; cursor: pointer; font-size: 16px; font-family: inherit;}
+    /* 被選中的按鈕變成深粉紅 */
+    .btn.active { background-color: #d87093; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>🌸 媽咪與筑筑的日本行 🌸</h1>
     <p class="subtitle">東京旅行日程與回憶紀錄</p>
+
     <div class="shortcut-buttons">
-      <a href="#day1" class="btn">DAY 1 抵達</a>
-      <a href="#day2" class="btn">DAY 2 新宿</a>
+      <button onclick="showDay('day1')" class="btn active" id="btn-day1">DAY 1 抵達</button>
+      <button onclick="showDay('day2')" class="btn" id="btn-day2">DAY 2 新宿</button>
     </div>
 
-    <div class="day-block" id="day1">
+    <div class="day-block active" id="day1">
       <div class="day-title"><strong>DAY 1 (4/6 Mon.) 抵達</strong></div>
       <div class="schedule">
         <p><span class="time">11:00</span> 到達 <a href="https://www.google.com/maps/search/?api=1&query=桃園機場第一航廈" target="_blank" style="color: #d87093; text-decoration: underline; font-weight: bold;">桃園機場第一航廈</a><br>
@@ -56,5 +65,23 @@
     </div>
     
   </div>
+
+  <script>
+    function showDay(dayId) {
+      // 先把所有行程都隱藏起來（移除 active 標籤）
+      document.querySelectorAll('.day-block').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      // 只顯示被點擊的那一天（加上 active 標籤）
+      document.getElementById(dayId).classList.add('active');
+
+      // 把所有按鈕的深粉紅色取消
+      document.querySelectorAll('.btn').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      // 讓被點擊的按鈕變成深粉紅色，提示現在在哪一天
+      document.getElementById('btn-' + dayId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
