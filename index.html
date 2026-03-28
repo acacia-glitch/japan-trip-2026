@@ -14,14 +14,20 @@
     .schedule p { margin: 10px 0; line-height: 1.5; }
     .time { font-weight: bold; color: #d87093; display: inline-block; width: 55px;}
     .note { font-size: 0.85em; color: #666; background: #fff8fa; padding: 4px 8px; border-radius: 5px; display: inline-block; margin-top: 4px;}
+    .shortcut-buttons { text-align: center; margin-bottom: 20px; }
+    .btn { display: inline-block; background-color: #ffb6c1; color: white; padding: 8px 16px; margin: 5px; border-radius: 20px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>🌸 媽咪與筑筑的日本行 🌸</h1>
     <p class="subtitle">東京旅行日程與回憶紀錄</p>
+    <div class="shortcut-buttons">
+      <a href="#day1" class="btn">DAY 1 抵達</a>
+      <a href="#day2" class="btn">DAY 2 新宿</a>
+    </div>
 
-    <div class="day-block">
+    <div class="day-block" id="day1">
       <div class="day-title"><strong>DAY 1 (4/6 Mon.) 抵達</strong></div>
       <div class="schedule">
         <p><span class="time">11:00</span> 到達 <a href="https://maps.google.com/?cid=1956240497297023895&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" style="color: #d87093; text-decoration: underline; font-weight: bold;">桃園機場第一航廈</a><br><span class="note">💡 記得吃午餐！</span></p>
@@ -33,7 +39,7 @@
       </div>
     </div>
 
-    <div class="day-block">
+    <div class="day-block" id="day2">
       <div class="day-title"><strong>DAY 2 (4/7 Tue.) 新宿</strong></div>
       <div class="schedule">
         <p><span class="time">09:00</span> 出發前往 <a href="https://maps.google.com/?cid=12811393089244390490&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" style="color: #d87093; text-decoration: underline; font-weight: bold;">上野恩賜公園 🌳</a></p>
